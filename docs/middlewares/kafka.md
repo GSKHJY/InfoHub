@@ -28,6 +28,8 @@ Kafka 底层使用 Zookeeper 进行管理。Zookeeper 负责管理 Kafka 集群�
 
 ## 基本组件
 
+![Kafka 组件](../_media/kafka_components.png ':size=80%')
+
 - Producer : 发布消息的客户端，生产者在默认情况下把消息均衡地分布到主题的所有分区上，而并不关心特定消息会被写到哪个分区。
 - Broker：一个从生产者接受并存储消息的客户端，broker 接收来自生产者的消息，为消息设置偏移量，并提交消息到磁盘保存。broker 为消费者提供服务，对读取分区的请求作出响应，返回已经提交到磁盘上的消息。
 - Consumer : 消费者从 Broker 中读取消息，一个消费者可以消费多个 topic 的消息，对于某一个 topic 的消息，其只会消费同一个 partition 中的消息
@@ -50,7 +52,7 @@ Segment 被译为段，将 Partition 进一步细分为若干个 segment，每�
 
 ## 集群角色
 
-- Leader 负责给定分区的所有读取和写入的节点，每个节点都会通过随机选择成为 leader。
+- Leader 负责给定分区的所有读取和写入的节点，每个节点都会通过随机选择成为 Leader。
 - Replicas 是为该分区复制日志的节点列表，无论它们是 Leader 还是当前处于活动状态。
 - Isr 是同步副本的集合。它是副本列表的子集，当前仍处于活动状态并追随Leader。
 
@@ -65,3 +67,4 @@ Segment 被译为段，将 Partition 进一步细分为若干个 segment，每�
 
 ## 参考资料
 
+[后端 - kafka入门介绍「详细教程」 - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000038974239)

@@ -13,10 +13,9 @@ Linux 基础建议学习斯坦福大学课程 《[The Missing Semester of Your C
 
 [调试及性能分析（python 相关不需要了解）](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/debugging-profiling.md)
 
-
 其他课程可按兴趣选学
 
 ## 进阶学习
 
-● 《鸟哥的 Linux 私房菜》
-● 《Vim 实用技巧（第2版）》
+- [《鸟哥的 Linux 私房菜》](https://book.douban.com/subject/4889838/) (顾老师有)
+- [《Vim 实用技巧（第2版）》](https://book.douban.com/subject/26967597/)(可以问我借)

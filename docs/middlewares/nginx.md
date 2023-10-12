@@ -24,51 +24,62 @@ Nginx 是一款轻量级的 Web 服务器 / 反向代理服务器 / 电子邮件
 
 在生产环境或者开发环境中 Nginx 一般会代理多个虚拟主机，如果把所有的配置文件写在默认的nginx.conf 中，看起来会非常臃肿，因此建议将每一个虚拟文件单独放置一个文件夹，在nginx.conf中导入各个配置，代码如下：
 
-```
+```json
 http {
 	# 省略中间配置
 
 	# 引用该目录下以 .conf 文件结尾的配置
-    include /etc/nginx/conf.d/*.conf;
+  include /etc/nginx/conf.d/*.conf;
 }
 ```
 
 ### Nginx 配置
 
-https://juejin.cn/post/6844903575210967048#heading-14
+[Nginx 基本配置详解 - 掘金](https://juejin.cn/post/6844903575210967048#heading-14)
 
 ## Nginx 基础命令
 
 启动 Nginx
+```shell
 /usr/local/nginx/sbin/nginx
+```
 关闭 Nginx，建议使用quit，等待工作进程处理完毕后关闭
+```shell
 /usr/local/nginx/sbin/nginx -s stop
+```
 或
+```shell
 /usr/local/nginx/sbin/nginx -s quit
+```
 重启 Nginx 
+```shell
 /usr/local/nginx/sbin/nginx -s reload
-生产服务器上执行 nginx 相关命令需要加 sudo
+```
+
+!> 生产服务器上执行 nginx 相关命令需要使用 webadmin 用户，加 sudo
 
 检查配置文件是否正确
+```shell
 /usr/local/nginx/sbin/nginx -t
+```
 
 ## Nginx 日志分割
 
-https://juejin.cn/post/6844903763216433159
+[简单搞定Nginx日志分割 - 掘金](https://juejin.cn/post/6844903763216433159)
 
 ## Nginx DNS 缓存问题
 
-运维遇坑记录(3)-Nginx缓存了DNS解析造成后端不通
-https://segmentfault.com/a/1190000020475756
-https://cloud.tencent.com/developer/article/1888426
+- [Nginx缓存原理及机制 - 个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000020475756)
+- [Nginx 动态DNS解析方案: resolver-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/1888426)
+
+## PS
+
+Nginx 的正确读音是 "恩静爱克斯"，而不是"恩静克斯"。
 
 ## 参考资料
 
-「查缺补漏」巩固你的Nginx知识体系
-Nginx 热部署和日志切割，你学会了吗？
-
+- [「查缺补漏」巩固你的Nginx知识体系 - 掘金](https://juejin.cn/post/6870264679063617550)
+- [Nginx 热部署和日志切割，你学会了吗？ - 掘金](https://juejin.cn/post/6844903985682481159#heading-2)
 ## 进阶学习
-
-《实战Nginx取代Apache的高性能web服务器》
-
-Nginx 文档：https://nginx.org/en/docs/
+- [实战Nginx 取代Apache的高性能web服务器](https://book.douban.com/subject/4251875/)
+- [Nginx 文档](https://nginx.org/en/docs/)

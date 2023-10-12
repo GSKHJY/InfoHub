@@ -2,7 +2,7 @@
 
 ## 网络分层协议
 
-
+![网络分层协议](../_media/internet_layers.png ':size=70%')
 
 根据不同体系，存在多种网络层级的划分模型，以下就 OSI 七层协议进行讲解：
 
@@ -211,5 +211,5 @@ unix  2      [ ]         DGRAM                    113619201 28968/sshd: root@pt
 
 ## 进阶学习
 
-- 《计算机网络：自顶向下方法》
+- [《计算机网络：自顶向下方法》](https://book.douban.com/subject/36081529/)
 - [小林coding-图解网络](https://xiaolincoding.com/network/)
