@@ -11,3 +11,4 @@
   * [Redis](middlewares/redis)
   * [Nginx](middlewares/nginx)
 * [故障处理](/ops_methods)
+* [参与贡献](/CONTRIBUTING)
