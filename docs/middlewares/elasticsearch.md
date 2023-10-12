@@ -18,7 +18,7 @@ ES 发展至今，除了搜索引擎本身之外，还收购了许多其他产�
 
 ## 倒排索引
 
-![倒排索引](../_media/es_index.jpeg ':size=80%')
+![倒排索引](https://p.ipic.vip/b6lf7t.jpeg ':size=80%')
 
 ES基于 Lucene 开发，Lucene 使用_倒排索引_来实现快速的全文检索。倒排索引存储在硬盘中。所以使用更快的硬盘，并且避免使用NAS（速度慢，延时大），是 ES 性能调优的一个选项。
 
@@ -134,11 +134,11 @@ GET /myIndex/_search
 
 ## ES内存使用与分配
 
-![ES 内存使用](../_media/es_memory.png ':size=100%')
+![ES 内存使用](https://p.ipic.vip/3z37pz.png ':size=100%')
 
 ## 我部 ES 整体架构
 
-![ES 架构](../_media/es_cluster.png ':size=90%')
+![ES 架构](https://p.ipic.vip/uf9xr4.png ':size=90%')
 
 ## ES 集群重启
 

@@ -144,7 +144,7 @@ jstat -gcutil pid 1000
 
 使用 `free -m` 查看内存使用情况，注意关注 available 这列，而不是 free。
 
-![free 命令结果](../_media/ops_memory.jpeg ':size=90%')
+![free 命令结果](https://p.ipic.vip/pc96y2.jpeg ':size=90%')
 
 查看是否有 heapdump 文件生产，如没有，使用 `jmap -dump:live,format=b,file=heap.hprof <pid>` 生产 heapdump 文件
 ，使用 mat(Eclipse Memory Analysis Tools) 导入 dump 文件进行分析。
@@ -159,7 +159,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 没有足够的内存空间给线程分配 Java 栈，基本上是线程池代码写的有问题，比如说忘记 shutdown ，所以说应该首先从代码层面来寻找问题，使用 jstack 或者 jmap。如果一切都正常，JVM 方面可以通过指定 Xss 来减少单个 thread stack 的大小。另外也可以在系统层面，可以通过修改 /etc/security/limits.conf的 nofile 和 nproc 来增大 os 对线程的限制：
 
-![nofile & nproc](../_media/ops_limits.png ':size=40%')
+![nofile & nproc](https://p.ipic.vip/2rq1a7.png ':size=40%')
 ```shell
 Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
 ```

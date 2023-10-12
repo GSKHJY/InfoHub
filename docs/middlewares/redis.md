@@ -84,7 +84,7 @@ RDB 有手动触发和自动触发两种触发方式。
 
 AOF 采用写后日志，即先写内存，后写日志。AOF 写回策略共有三种，默认的配置项为 Everysec：
 
-![AOP](../_media/redis_aof.png ':size=80%')
+![AOF](https://p.ipic.vip/ayz1n1.png ':size=80%')
 
 AOF 重写过程是由后台进程 bgrewriteaof 来完成的。主线程 fork 出后台的 bgrewriteaof 子进程，fork 会把主线程的内存拷贝一份给 bgrewriteaof 子进程，这里面就包含了数据库的最新数据。然后，bgrewriteaof 子进程就可以在不影响主线程的情况下，逐一把拷贝的数据写成操作，记入重写日志。
 

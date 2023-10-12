@@ -2,7 +2,7 @@
 
 ## 网络分层协议
 
-![网络分层协议](../_media/internet_layers.png ':size=70%')
+![网络分层协议](https://p.ipic.vip/l32re6.png ':size=70%')
 
 根据不同体系，存在多种网络层级的划分模型，以下就 OSI 七层协议进行讲解：
 

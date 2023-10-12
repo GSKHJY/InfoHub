@@ -28,7 +28,7 @@ Kafka 底层使用 Zookeeper 进行管理。Zookeeper 负责管理 Kafka 集群�
 
 ## 基本组件
 
-![Kafka 组件](../_media/kafka_components.png ':size=80%')
+![Kafka 组件](https://p.ipic.vip/hpgh38.png ':size=80%')
 
 - Producer : 发布消息的客户端，生产者在默认情况下把消息均衡地分布到主题的所有分区上，而并不关心特定消息会被写到哪个分区。
 - Broker：一个从生产者接受并存储消息的客户端，broker 接收来自生产者的消息，为消息设置偏移量，并提交消息到磁盘保存。broker 为消费者提供服务，对读取分区的请求作出响应，返回已经提交到磁盘上的消息。

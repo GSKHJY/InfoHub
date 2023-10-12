@@ -1,7 +1,7 @@
 
 ## JVM 内存模型
 
-![JVM 内存模型](../_media/jvm_model.png ':size=70%')
+![JVM 内存模型](https://s2.loli.net/2023/10/12/N8f13qWsyYZt56D.png ':size=70%')
 
 ### 程序计数器
 
@@ -67,7 +67,7 @@ Java 堆存储 Java 对象信息，由所有线程共享。Java 堆可以处于�
 新生代和老年代的默认比例为 1 : 2 ，通过 XX:NewRatio=2 参数配置。
 新生代中，Eden、From Survivor、To Survivor的比例为 8 : 1 : 1。
 
-![JVM 堆](../_media/jvm_heap.png ':size=80%')
+![JVM 堆](https://p.ipic.vip/056ic6.png ':size=80%')
 
 ### 方法区（永久代 / 元数据区（metaspace））
 
@@ -106,7 +106,7 @@ Major GC 只清理老年代， Full GC 同时清理新生代、老年代。两�
 
 #### 标记 - 清除算法
 
-![标记-清除](../_media/jvm_mark-sweep.png ':size=80%')
+![标记-清除](https://p.ipic.vip/ezez2r.png ':size=80%')
 
 将存活的对象进行标记，然后清理掉未被标记的对象。
 
@@ -117,7 +117,7 @@ Major GC 只清理老年代， Full GC 同时清理新生代、老年代。两�
 
 #### 标记 - 整理算法
 
-![标记-整理](../_media/jvm_mark-compact.png ':size=80%')
+![标记-整理](https://p.ipic.vip/tw5p7e.png ':size=80%')
 
 让所有存活的对象都向一端移动，然后直接清理掉端边界以外的内存。
 
@@ -125,7 +125,7 @@ Major GC 只清理老年代， Full GC 同时清理新生代、老年代。两�
 
 #### 复制算法
 
-![复制算法](../_media/jvm_copying.png ':size=80%')
+![复制算法](https://p.ipic.vip/7ndsjw.png ':size=80%')
 
 将内存划分为大小相等的两块，每次只使用其中一块，当这一块内存用完了就将还存活的对象复制到另一块上面，然后再把使用过的内存空间进行一次清理。
 
@@ -135,7 +135,7 @@ Major GC 只清理老年代， Full GC 同时清理新生代、老年代。两�
 
 ### 垃圾回收器
 
-![垃圾回收器](../_media/jvm_gc.png ':size=100%')
+![垃圾回收器](https://p.ipic.vip/q3l7px.png ':size=100%')
 
 以上是 HotSpot 虚拟机中的 7 个垃圾收集器，连线表示垃圾收集器可以配合使用。
 
@@ -206,8 +206,7 @@ G1(Garbage-First)，它是一款面向服务端应用的垃圾收集器，在多
 
 堆被分为新生代和老年代，其它收集器进行收集的范围都是整个新生代或者老年代，而 G1 可以直接对新生代和老年代一起回收。
 
-
-![G1收集器](../_media/jvm_g1.png ':size=100%')
+![G1收集器](https://p.ipic.vip/jag7th.png ':size=100%')
 
 通过引入 Region 的概念，从而将原来的一整块内存空间划分成多个的小空间，使得每个小空间可以单独进行垃圾回收。这种划分方法带来了很大的灵活性，使得可预测的停顿时间模型成为可能。通过记录每个 Region 垃圾回收时间以及回收所获得的空间(这两个值是通过过去回收的经验获得)，并维护一个优先列表，每次根据允许的收集时间，优先回收价值最大的 Region。
 
