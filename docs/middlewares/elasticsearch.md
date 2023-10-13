@@ -178,6 +178,44 @@ PUT _cluster/settings
 }
 ```
 
+## 运维常用命令
+
+查看集群健康情况：
+```json
+GET _cluster/health
+```
+
+查看分片未分配原因：
+```json
+GET _cluster/allocation/explain
+```
+
+查看集群配置：
+```json
+GET _cluster/settings?include_defaults
+```
+
+清除缓存：
+```json
+POST _cache/clear
+```
+
+查看内存占用：
+```json
+GET _cat/nodes?h=name,heapCurrent,fielddataMemory,queryCacheMemory,requestCacheMemory,segmentsMemory&v
+```
+
+查看各个索引 fielddataMemory 占用：
+```json
+GET _stats/fielddata?fields=*
+```
+
+
+查看 JVM：
+```json
+GET _nodes/stats/jvm?human
+```
+
 ## 进阶学习
 
 [ES官方文档](https://www.elastic.co/guide/en/elasticsearch/reference/7.6/index.html)
