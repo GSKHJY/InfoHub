@@ -216,6 +216,10 @@ GET _stats/fielddata?fields=*
 GET _nodes/stats/jvm?human
 ```
 
+## ES 集群同步
+
+![ES集群同步](https://p.ipic.vip/c3ev6t.png ':size=50%')
+
 ## 进阶学习
 
 [ES官方文档](https://www.elastic.co/guide/en/elasticsearch/reference/7.6/index.html)
