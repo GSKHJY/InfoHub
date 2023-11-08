@@ -46,11 +46,12 @@ service_name=$1
 Java 应用手动重启：
 ```shell
 nohup java  -jar JVM_PARAMETERS LOG_PARAMETERS MICRO_SERVICES_PARAMETERS 
-		APPLICATON—VERSION.jar &
+		APPLICATON—VERSION.jar >/dev/null 2>&1 &
 ```
 
-- nohup 指忽略所有挂断（SIGHUP）信号
-- & 指在后台运行
+- `nohup` 指忽略所有挂断（SIGHUP）信号
+- `>/dev/null 2>&1` 指将错误信息重定向到标准输出，并将输出丢弃，可以简写为 `>&/dev/null` 或 `&>/dev/null`
+- `&` 指在后台运行
 
 ## 版本回退
 
