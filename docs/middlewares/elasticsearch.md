@@ -200,6 +200,11 @@ GET _cluster/settings?include_defaults
 POST _cache/clear
 ```
 
+重新分配分片：
+```json
+POST _cluster/reroute?retry_failed=true
+```
+
 查看内存占用：
 ```json
 GET _cat/nodes?h=name,heapCurrent,fielddataMemory,queryCacheMemory,requestCacheMemory,segmentsMemory&v
