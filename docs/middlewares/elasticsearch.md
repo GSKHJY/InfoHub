@@ -20,7 +20,7 @@ ES 发展至今，除了搜索引擎本身之外，还收购了许多其他产�
 
 ![倒排索引](https://p.ipic.vip/b6lf7t.jpeg ':size=80%')
 
-ES基于 Lucene 开发，Lucene 使用_倒排索引_来实现快速的全文检索。倒排索引存储在硬盘中。所以使用更快的硬盘，并且避免使用NAS（速度慢，延时大），是 ES 性能调优的一个选项。
+ES 基于 Lucene 开发，Lucene 使用倒排索引来实现快速的全文检索。倒排索引存储在硬盘中。所以使用更快的硬盘，并且避免使用NAS（速度慢，延时大），是 ES 性能调优的一个选项。
 
 倒排索引包含两个部分：
 - 单词词典
@@ -39,7 +39,8 @@ ES基于 Lucene 开发，Lucene 使用_倒排索引_来实现快速的全文检�
 - 文档ID
 - 词频TF：该单词在文档中出现的次数，用于相关性评分
 - 位置（Position）：单词在文档中分词的位置（第几个词），用于语句搜索
-- 偏移（Offset）：记录单词的开始结束位置（第几个字符到第几个字符），实现高亮显示
+- 偏移（Offset）：记录单词的开始结束位置（第几个字符到第几个字符），实现高亮显示 
+
 在 mapping 设置中，可以通过 `index_options` 字段控制倒排索引中记录的内容：
 - docs：记录 `doc id`
 - freqs：记录 `doc id` 和 `term frequencies`
@@ -61,7 +62,7 @@ Lucene 的倒排索引具有不可变性，索引写入磁盘后永远不会被�
 数据新增的操作大致可分为3个步骤：
 1. 将新的文档写入 ES 的 JVM 内存中，这时这条数据还不能被检索；
 2. 每隔一段时间（默认1秒，可配置），JVM内存中的索引被转移到服务器内存中（off-heap），生产一个新的段，这个操作被称为 **refresh**；
-3. 每隔一段时间（默认30分钟，可配置），缓存中的段被写入到磁盘中，并生成一个新的_提交点（记录了当前索引中存在的所有段的元数据）。写入磁盘后，缓存中的数据被清除，这个操作被称为 **flush**。
+3. 每隔一段时间（默认30分钟，可配置），缓存中的段被写入到磁盘中，并生成一个新的提交点（记录了当前索引中存在的所有段的元数据）。写入磁盘后，缓存中的数据被清除，这个操作被称为 **flush**。
 由以上步骤可见，ES提供的搜索功能是**近实时（1s）**的。
 
 ### 执行间隔
@@ -92,13 +93,13 @@ ES 使用 watermark 来标记磁盘使用情况，配置位于 `cluster.routing.
 
 watermark 共有三个阶段：low，high 以及 flood_stage
 
-- low：默认85%，超过low水位后，es不会将分配分片给该节点
-- high：默认为90%，超过high水位后，es尝试将节点上的现有分片重新定位
-- flood_stage：默认为95%，进行洪水泛滥阶段后，es对节点上分片对应的索引进行强制只读处理。
+- low：默认85%，超过 low 水位后，ES 不会将分配分片给该节点
+- high：默认为90%，超过 high 水位后，ES 尝试将节点上的现有分片重新定位
+- flood_stage：默认为95%，进行洪水泛滥阶段后，ES 对节点上分片对应的索引进行强制只读处理。
 
 ## 执行明细查看
 
-在 query 上方设置 `profile: true`，来开启 profile API，可以看到 ES 的一个搜索情况，是如何拆分成底层的 Lucene 请求的，并且会显示每部分的耗时情况，可以用于查询优化以及问题排查：
+在 query 上方设置 `profile: true`，来开启 profile API，可以看到 ES 的搜索情况，是如何拆分成底层的 Lucene 请求的，并且会显示每部分的耗时情况，可以用于查询优化以及问题排查：
 
 ```json
 GET /myIndex/_search
@@ -116,8 +117,8 @@ GET /myIndex/_search
 
 写性能优化：
 - 只需要聚合不需要搜索的字段，index 设置成 false
-- 不需要算分的字段，norms 设置成 flase
-- 关闭字符串的 dynamic mapping功能，减少字段数量
+- 不需要算分的字段，norms 设置成 false
+- 关闭字符串的 dynamic mapping 功能，减少字段数量
 - 使用 index_option 控制哪些字段会被添加到倒排索引中，可以一定程度的节约 CPU
 - 关闭 _source，减少 IO 操作，但会导致 index 文档与 update 操作失效，适合指标型数据
 - 调大 refresh_interval 的数值，减少刷新（refresh）频率，牺牲实时性（需同时调整 indices.memory.index_buffer_size）
@@ -145,7 +146,7 @@ GET /myIndex/_search
 1. 禁用分片配置
 ```json
 PUT _cluster/settings
-{
+{ 
   "persistent": {
     "cluster.routing.allocation.enable": "primaries"
   }
