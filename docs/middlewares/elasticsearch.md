@@ -222,6 +222,15 @@ GET _stats/fielddata?fields=*
 GET _nodes/stats/jvm?human
 ```
 
+查看分词结果：
+```
+GET /analyze_sample/_analyze
+{
+  "analyzer" : "whitespace",
+  "text" : "this is a test"
+}
+```
+
 ## ES 集群同步
 
 ![ES集群同步](https://p.ipic.vip/c3ev6t.png ':size=50%')
