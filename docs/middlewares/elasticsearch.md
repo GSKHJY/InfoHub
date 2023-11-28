@@ -223,7 +223,7 @@ GET _nodes/stats/jvm?human
 ```
 
 查看分词结果：
-```
+```json
 GET /analyze_sample/_analyze
 {
   "analyzer" : "whitespace",
